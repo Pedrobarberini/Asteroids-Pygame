@@ -19,7 +19,7 @@ clock = pygame.time.Clock()
 
 font = pygame.font.SysFont("Arial", 32)
 
-player = Player(WIDTH // 2, HEIGHT // 2)
+player = Player(WIDTH // 1, HEIGHT // 1)
 
 bullets = []
 asteroids = []
