@@ -47,9 +47,6 @@ def create_explosion(x, y):
 
 while True:
 
-    # =====================
-    # EVENTOS
-    # =====================
     for event in pygame.event.get():
 
         if event.type == pygame.QUIT:
@@ -95,14 +92,8 @@ while True:
 
     if not game_over:
 
-        # =====================
-        # UPDATE PLAYER
-        # =====================
         player.update()
 
-        # =====================
-        # UPDATE BULLETS
-        # =====================
         for bullet in bullets[:]:
 
             bullet.update()
@@ -115,15 +106,9 @@ while True:
             ):
                 bullets.remove(bullet)
 
-        # =====================
-        # UPDATE ASTEROIDS
-        # =====================
         for asteroid in asteroids:
             asteroid.update()
 
-        # =====================
-        # UPDATE PARTICLES
-        # =====================
         for particle in particles[:]:
 
             particle.update()
@@ -131,9 +116,6 @@ while True:
             if particle.life <= 0:
                 particles.remove(particle)
 
-        # =====================
-        # BULLET COLLISION
-        # =====================
         for bullet in bullets[:]:
 
             for asteroid in asteroids[:]:
@@ -168,9 +150,6 @@ while True:
 
                     break
 
-        # =====================
-        # PLAYER COLLISION
-        # =====================
         for asteroid in asteroids[:]:
 
             distance = math.sqrt(
@@ -198,9 +177,6 @@ while True:
                 if lives <= 0:
                     game_over = True
 
-        # =====================
-        # SPAWN
-        # =====================
         spawn_timer += 1
 
         if spawn_timer >= 180:
@@ -211,9 +187,6 @@ while True:
 
             spawn_timer = 0
 
-    # =====================
-    # DRAW
-    # =====================
     screen.fill((10, 10, 20))
 
     if not game_over:
