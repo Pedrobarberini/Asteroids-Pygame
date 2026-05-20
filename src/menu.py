@@ -50,7 +50,7 @@ menu_options = [
 
 selected = 0
 
-volume = 50
+volume = 0.5
 
 
 stars = []
