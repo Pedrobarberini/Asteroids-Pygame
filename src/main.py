@@ -8,7 +8,9 @@ from asteroid import Asteroid
 from particle import Particle
 
 
-def run_game():
+def run_game(sounds):
+
+
 
     pygame.init()
 
@@ -18,7 +20,7 @@ def run_game():
     screen = pygame.display.set_mode(
         (WIDTH, HEIGHT)
     )
-
+     
     pygame.display.set_caption("Asteroids")
 
     clock = pygame.time.Clock()
@@ -38,9 +40,9 @@ def run_game():
     particles = []
 
     score = 0
-    lives = 3
-
+    lives = 2
     game_over = False
+    death_sound_played = False
 
     spawn_timer = 0
 
@@ -55,6 +57,7 @@ def run_game():
             particles.append(
                 Particle(x, y)
             )
+            sounds.play_explosion()
 
 
     while True:
@@ -79,6 +82,7 @@ def run_game():
                                 player.angle
                             )
                         )
+                        sounds.play_shooting()
 
             else:
 
@@ -102,7 +106,8 @@ def run_game():
                             )
 
                         score = 0
-                        lives = 3
+                        lives = 2   
+                        death_sound_played = False
 
                         game_over = False
 
@@ -248,6 +253,10 @@ def run_game():
 
         # game over
         if game_over:
+
+            if not death_sound_played:
+                sounds.play_death()
+                death_sound_played = True
 
             game_over_text = font.render(
                 "GAME OVER",

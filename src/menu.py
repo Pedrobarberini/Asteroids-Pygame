@@ -4,6 +4,11 @@ import random
 import math
 
 from main import run_game
+from sounds import Sounds as SoundsClass
+
+
+sounds = SoundsClass()
+sounds.play_menu()
 
 pygame.init()
 
@@ -309,8 +314,8 @@ while True:
                 option = menu_options[selected]
 
                 if option == "JOGAR":
-
-                    run_game()
+                    sounds.stop_menu()
+                    run_game(sounds)
 
                 elif option == "SAIR":
 
